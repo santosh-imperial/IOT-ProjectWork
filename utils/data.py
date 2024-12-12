@@ -3,21 +3,15 @@ from datetime import datetime, timedelta
 import numpy as np
 
 def get_glucose_data():
+    now = datetime.now()
+    timestamps = [(now - timedelta(hours=x)).strftime('%Y-%m-%dT%H:%M:%S') for x in range(24, -1, -3)]
+    
     return {
-        'timestamp': [
-            '2024-01-11T00:00:00',
-            '2024-01-11T03:00:00',
-            '2024-01-11T06:00:00',
-            '2024-01-11T09:00:00',
-            '2024-01-11T12:00:00',
-            '2024-01-11T15:00:00',
-            '2024-01-11T18:00:00',
-            '2024-01-11T21:00:00'
-        ],
-        'value': [120, 110, 95, 130, 140, 125, 110, 105],
+        'timestamp': timestamps,
+        'value': [120, 110, 95, 130, 140, 125, 110, 105, 115],
         'meals': [
             {
-                'timestamp': '2024-01-11T07:00:00',
+                'timestamp': (now - timedelta(hours=17)).strftime('%Y-%m-%dT%H:%M:%S'),
                 'name': 'Oatmeal with berries',
                 'type': 'breakfast',
                 'nutrition': {
@@ -28,7 +22,7 @@ def get_glucose_data():
                 }
             },
             {
-                'timestamp': '2024-01-11T12:00:00',
+                'timestamp': (now - timedelta(hours=12)).strftime('%Y-%m-%dT%H:%M:%S'),
                 'name': 'Chicken salad',
                 'type': 'lunch',
                 'nutrition': {
@@ -39,7 +33,7 @@ def get_glucose_data():
                 }
             },
             {
-                'timestamp': '2024-01-11T18:00:00',
+                'timestamp': (now - timedelta(hours=6)).strftime('%Y-%m-%dT%H:%M:%S'),
                 'name': 'Salmon with vegetables',
                 'type': 'dinner',
                 'nutrition': {

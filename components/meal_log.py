@@ -1,39 +1,34 @@
-import streamlit as st
+mport streamlit as st
 import pandas as pd
+from datetime import datetime
+
+def format_nutrition(nutrition):
+    if not nutrition:
+        return '-'
+    return (f"{nutrition['calories']} cal | "
+            f"{nutrition['carbs']}g carbs | "
+            f"{nutrition['protein']}g protein | "
+            f"{nutrition['fat']}g fat")
+
+def format_timestamp(timestamp):
+    return datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S').strftime('%I:%M %p')
 
 def render_meal_log(meals):
     st.subheader("Meal Log")
     
-    # Convert meals to DataFrame for better display
-    #df = pd.DataFrame(meals)
-    
-    # Format nutrition info
-    #def format_nutrition(row):
-    #    if 'nutrition' in row and row['nutrition']:
-    #        return f"{row['nutrition']['calories']} cal | {row['nutrition']['carbs']}g carbs | {row['nutrition']['protein']}g protein | {row['nutrition']['fat']}g fat"
-    #    return '-'
-    
-    #df['Nutrition'] = df.apply(format_nutrition, axis=1)
-
+    if not meals:
+        st.info("No meals logged today")
+        return
+        
     # Create DataFrame with required columns
-    data = []
-    for meal in meals:
-        nutrition_str = '-'
-        if 'nutrition' in meal:
-            n = meal['nutrition']
-            nutrition_str = f"{n['calories']} cal | {n['carbs']}g carbs | {n['protein']}g protein | {n['fat']}g fat"
-            
-        data.append({
-            'Time': pd.to_datetime(meal['timestamp']).strftime('%I:%M %p'),
-            'Meal': meal['name'],
-            'Type': meal['type'].title(),
-            'Nutrition': nutrition_str
-        })
+    data = [{
+        'Time': format_timestamp(meal['timestamp']),
+        'Meal': meal['name'],
+        'Type': meal['type'].title(),
+        'Nutrition': format_nutrition(meal.get('nutrition'))
+    } for meal in meals]
     
     df = pd.DataFrame(data)
-
-    # Display formatted table
-    st.table(df[['Time', 'name', 'type', 'Nutrition']].rename(columns={
-        'name': 'Meal',
-        'type': 'Type'
-    }))
+    
+    # Display table with formatted columns
+    st.table(df)

@@ -48,6 +48,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 def main():
+    st.set_page_config(
+        page_title="Health Dashboard",
+        layout="wide"
+    )
+    
     # Header
     st.title("Health Dashboard")
     
@@ -69,16 +74,18 @@ def main():
     col1, col2 = st.columns(2)
     
     with col1:
-        # Glucose Section
+        # Get data first to avoid multiple calls
         glucose_data = get_glucose_data()
+        
+        # Glucose Section
         render_glucose_section(glucose_data)
         
-        # Meal Log
-        render_meal_log(glucose_data.get('meals', []))
+        # Meal Log - pass meals from glucose data
+        if 'meals' in glucose_data:
+            render_meal_log(glucose_data['meals'])
         
         # Time in Range
-        ranges = get_time_in_range()
-        render_time_in_range(ranges)
+        render_time_in_range(get_time_in_range())
         
         # Heart Rate Section
         render_heart_rate_section(get_heart_rate_data())
@@ -87,10 +94,9 @@ def main():
         render_exercise_section(get_exercise_data())
     
     with col2:
-        # Recommendations will go here
+        # Recommendations
         st.subheader("Recommendations")
         st.write("Personalized health insights will appear here.")
-        # Add recommendations component
 
 if __name__ == "__main__":
     main()
