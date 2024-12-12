@@ -11,7 +11,7 @@ def render_cross_correlation_insights(glucose_data, sleep_data, heart_rate_data)
     # Merge datasets
     merged_data = pd.DataFrame({
         "Timestamp": glucose_data["timestamp"],
-        "Glucose": glucose_data["value"],
+        "Glucose": glucose_data["Value"],
         "Sleep": sleep_data["duration"],  # Assuming 'duration' is in minutes
         "HeartRate": heart_rate_data["value"]  # Assuming 'value' is bpm
     }).dropna()
