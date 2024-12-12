@@ -74,7 +74,7 @@ def main():
         glucose_data = get_glucose_data()
         glucose_data_df = pd.DataFrame({
             'timestamp': pd.to_datetime(glucose_data['timestamp']),
-            'value': glucose_data['value']
+            'Value': glucose_data['value']
             })
         
         # Glucose Section
