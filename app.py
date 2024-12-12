@@ -30,6 +30,7 @@ from components.recipe import render_recipe_section
 from components.shopping_list import render_shopping_list
 from components.meal_log import render_meal_log
 from components.time_in_range import render_time_in_range
+from components.what_if_meals import render_what_if_scenarios
 
 # Custom CSS
 st.markdown("""
@@ -97,6 +98,7 @@ def main():
         # Recommendations
         st.subheader("Recommendations")
         st.write("Personalized health insights will appear here.")
+        render_what_if_scenarios()
 
 if __name__ == "__main__":
     main()
