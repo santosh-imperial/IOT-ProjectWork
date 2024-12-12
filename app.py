@@ -8,7 +8,10 @@ from utils.data import (
     get_glucose_data,
     get_heart_rate_data,
     get_exercise_data,
-    get_meal_recommendation
+    get_meal_recommendation,
+    get_recipe,
+    get_shopping_list,
+    get_time_in_range
 )
 from components.welcome import render_welcome_section
 from components.metrics import render_metrics_grid
