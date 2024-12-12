@@ -55,3 +55,31 @@ def get_meal_recommendation():
             'Onion'
         ]
     }
+def get_recipe():
+    return {
+        'ingredients': [
+            {'name': 'Boneless chicken thigh', 'amount': '500g'},
+            {'name': 'Tikka masala curry sauce', 'amount': '400g'},
+            {'name': 'Naan bread', 'amount': '4 pieces'},
+            {'name': 'Garlic', 'amount': '4 cloves'},
+            {'name': 'Onion', 'amount': '1 large'}
+        ],
+        'steps': [
+            {'step': 1, 'instruction': 'Place the chicken in the air fryer for 20 mins'},
+            {'step': 2, 'instruction': 'Put the naan in the oven'},
+            {'step': 3, 'instruction': 'Once the chicken is ready, add it to the tikka sauce'},
+            {'step': 4, 'instruction': 'Garnish with onion'},
+            {'step': 5, 'instruction': 'Once naan is ready, garnish with garlic'}
+        ]
+    }
+
+def get_shopping_list():
+    return [
+        {'id': '1', 'name': 'Milk', 'category': 'Dairy', 'checked': False},
+        {'id': '2', 'name': 'Bread', 'category': 'Bakery', 'checked': False},
+        {'id': '3', 'name': 'Eggs', 'category': 'Dairy', 'checked': False},
+        {'id': '4', 'name': 'Cheese', 'category': 'Dairy', 'checked': False},
+        {'id': '5', 'name': 'Chicken', 'category': 'Meat', 'checked': False},
+        {'id': '6', 'name': 'Spinach', 'category': 'Produce', 'checked': True},
+        {'id': '7', 'name': 'Tomatoes', 'category': 'Produce', 'checked': True}
+    ]

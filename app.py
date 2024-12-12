@@ -15,6 +15,10 @@ from components.metrics import render_metrics_grid
 from components.glucose import render_glucose_section
 from components.heart_rate import render_heart_rate_section
 from components.exercise import render_exercise_section
+from components.recipe import render_recipe_section 
+from components.shopping_list import render_shopping_list
+from components.meal_log import render_meal_log
+from components.time_in_range import render_time_in_range
 
 # Page config
 st.set_page_config(
@@ -47,6 +51,14 @@ def main():
     # Welcome Section
     render_welcome_section(get_meal_recommendation())
     
+    # Recipe Section
+    recipe = get_recipe()
+    render_recipe_section(recipe)
+    
+    # Shopping List
+    shopping_list = get_shopping_list()
+    render_shopping_list(shopping_list)
+    
     # Metrics Grid
     render_metrics_grid()
     
@@ -55,7 +67,15 @@ def main():
     
     with col1:
         # Glucose Section
-        render_glucose_section(get_glucose_data())
+        glucose_data = get_glucose_data()
+        render_glucose_section(glucose_data)
+        
+        # Meal Log
+        render_meal_log(glucose_data.get('meals', []))
+        
+        # Time in Range
+        ranges = get_time_in_range()
+        render_time_in_range(ranges)
         
         # Heart Rate Section
         render_heart_rate_section(get_heart_rate_data())
