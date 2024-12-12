@@ -83,3 +83,42 @@ def get_shopping_list():
         {'id': '6', 'name': 'Spinach', 'category': 'Produce', 'checked': True},
         {'id': '7', 'name': 'Tomatoes', 'category': 'Produce', 'checked': True}
     ]
+
+def get_time_in_range():
+    return [
+        {
+            'label': 'Very High',
+            'range': '>250 mg/dL',
+            'percentage': 20,
+            'time': '4h 48min',
+            'color': '#F59E0B'  # amber-500
+        },
+        {
+            'label': 'High',
+            'range': '181-250 mg/dL',
+            'percentage': 23,
+            'time': '5h 31min',
+            'color': '#FCD34D'  # yellow-300
+        },
+        {
+            'label': 'Target Range',
+            'range': '70-180 mg/dL',
+            'percentage': 47,
+            'time': '11h 17min',
+            'color': '#10B981'  # green-500
+        },
+        {
+            'label': 'Low',
+            'range': '54-69 mg/dL',
+            'percentage': 4,
+            'time': '58min',
+            'color': '#F87171'  # red-400
+        },
+        {
+            'label': 'Very Low',
+            'range': '<54 mg/dL',
+            'percentage': 6,
+            'time': '1h 26min',
+            'color': '#DC2626'  # red-600
+        }
+    ]
