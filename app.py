@@ -72,9 +72,13 @@ def main():
     with col1:
         # Get data first to avoid multiple calls
         glucose_data = get_glucose_data()
+        glucose_data_df = pd.DataFrame({
+            'timestamp': pd.to_datetime(glucose_data['timestamp']),
+            'value': glucose_data['value']
+            })
         
         # Glucose Section
-        render_glucose_trends(glucose_data)
+        render_glucose_trends(glucose_data_df)
         
         # Meal Log - pass meals from glucose data
         if 'meals' in glucose_data:
