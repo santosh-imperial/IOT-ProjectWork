@@ -6,7 +6,6 @@ def render_meal_log(meals):
     
     # Convert meals to DataFrame for better display
     #df = pd.DataFrame(meals)
-    #df['Time'] = pd.to_datetime(df['timestamp']).dt.strftime('%I:%M %p')
     
     # Format nutrition info
     #def format_nutrition(row):
