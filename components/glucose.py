@@ -28,9 +28,9 @@ def render_glucose_trends(glucose_data):
 
     # Plot glucose trends
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=glucose_data['Date'], y=glucose_data['Value'],
+    fig.add_trace(go.Scatter(x=glucose_data['timestamp'], y=glucose_data['Value'],
                              mode='lines+markers', name='Glucose Levels'))
-    fig.add_trace(go.Scatter(x=glucose_data['Date'], y=glucose_data['RollingAvg'],
+    fig.add_trace(go.Scatter(x=glucose_data['timestamp'], y=glucose_data['RollingAvg'],
                              mode='lines', name='3-Day Rolling Average'))
     fig.update_layout(
         title="Glucose Trends",
