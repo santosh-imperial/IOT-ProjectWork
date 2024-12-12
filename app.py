@@ -19,7 +19,8 @@ from utils.data import (
     get_meal_recommendation,
     get_recipe,
     get_shopping_list,
-    get_time_in_range
+    get_time_in_range,
+    get_sleep_data
 )
 from components.welcome import render_welcome_section
 from components.metrics import render_metrics_grid
@@ -31,6 +32,7 @@ from components.shopping_list import render_shopping_list
 from components.meal_log import render_meal_log
 from components.time_in_range import render_time_in_range
 from components.what_if_meals import render_what_if_scenarios
+from components.cross_correlation import render_cross_correlation_insights
 
 # Custom CSS
 st.markdown("""
@@ -93,12 +95,17 @@ def main():
         
         # Exercise Section
         render_exercise_section(get_exercise_data())
+
+        render_cross_correlation_insights(glucose_data_df, get_sleep_data(), get_heart_rate_data())
     
     with col2:
         # Recommendations
         st.subheader("Recommendations")
         st.write("Personalized health insights will appear here.")
         render_what_if_scenarios()
+
+    
+        
 
 if __name__ == "__main__":
     main()
