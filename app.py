@@ -23,7 +23,8 @@ from utils.data import (
 )
 from components.welcome import render_welcome_section
 from components.metrics import render_metrics_grid
-from components.glucose import render_glucose_section
+#from components.glucose import render_glucose_section
+from components.glucose import render_glucose_trends
 from components.heart_rate import render_heart_rate_section
 from components.exercise import render_exercise_section
 from components.recipe import render_recipe_section 
@@ -74,7 +75,7 @@ def main():
         glucose_data = get_glucose_data()
         
         # Glucose Section
-        render_glucose_section(glucose_data)
+        render_glucose_trends(glucose_data)
         
         # Meal Log - pass meals from glucose data
         if 'meals' in glucose_data:
