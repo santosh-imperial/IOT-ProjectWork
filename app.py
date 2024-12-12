@@ -4,6 +4,14 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
+# Must be the first Streamlit command
+st.set_page_config(
+    page_title="Health Dashboard",
+    page_icon="🏥",
+    layout="wide"
+)
+
+# Import components after set_page_config
 from utils.data import (
     get_glucose_data,
     get_heart_rate_data,
@@ -23,13 +31,6 @@ from components.shopping_list import render_shopping_list
 from components.meal_log import render_meal_log
 from components.time_in_range import render_time_in_range
 
-# Page config
-st.set_page_config(
-    page_title="Health Dashboard",
-    page_icon="🏥",
-    layout="wide"
-)
-
 # Custom CSS
 st.markdown("""
     <style>
@@ -48,11 +49,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 def main():
-    st.set_page_config(
-        page_title="Health Dashboard",
-        layout="wide"
-    )
-    
     # Header
     st.title("Health Dashboard")
     
