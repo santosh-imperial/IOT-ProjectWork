@@ -9,7 +9,7 @@ def render_recipe_section(recipe):
         st.image(
             "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=800&h=600&fit=crop",
             caption="Chicken Tikka Masala",
-            use_column_width=True
+            use_container_width=True
         )
     
     with col2:

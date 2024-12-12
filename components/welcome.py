@@ -1,7 +1,7 @@
 import streamlit as st
 
 def render_welcome_section(recommendation):
-    st.header(f"Hi Sartosh, Welcome Back!")
+    st.header(f"Hi Santosh, Welcome Back!")
     
     with st.container():
         st.markdown(f"""
