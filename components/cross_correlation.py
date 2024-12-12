@@ -12,15 +12,15 @@ def render_cross_correlation_insights(glucose_data, sleep_data, heart_rate_data)
     glucose_df = pd.DataFrame({
         'Timestamp': pd.to_datetime(glucose_data['timestamp']),
         'Glucose': glucose_data['Value']
-    })
+    }).sort_values(by="Timestamp")
     sleep_df = pd.DataFrame({
         'Timestamp': pd.to_datetime(sleep_data['timestamp']),
         'Sleep': sleep_data['duration']
-    })
+    }).sort_values(by="Timestamp")
     heart_rate_df = pd.DataFrame({
         'Timestamp': pd.to_datetime(heart_rate_data['timestamp']),
         'HeartRate': heart_rate_data['value']
-    })
+    }).sort_values(by="Timestamp")
 
     # Merge datasets
     merged_data = pd.merge_asof(glucose_df, sleep_df, on="Timestamp", direction="nearest")
