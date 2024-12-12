@@ -3,18 +3,54 @@ from datetime import datetime, timedelta
 import numpy as np
 
 def get_glucose_data():
-    # Generate sample glucose data
-    dates = pd.date_range(start=datetime.now() - timedelta(days=1),
-                         end=datetime.now(),
-                         freq='30min')
-    
-    glucose_values = np.random.normal(120, 20, len(dates))
-    glucose_values = np.clip(glucose_values, 70, 180)
-    
-    return pd.DataFrame({
-        'timestamp': dates,
-        'value': glucose_values
-    })
+    return {
+        'timestamp': [
+            '2024-01-11T00:00:00',
+            '2024-01-11T03:00:00',
+            '2024-01-11T06:00:00',
+            '2024-01-11T09:00:00',
+            '2024-01-11T12:00:00',
+            '2024-01-11T15:00:00',
+            '2024-01-11T18:00:00',
+            '2024-01-11T21:00:00'
+        ],
+        'value': [120, 110, 95, 130, 140, 125, 110, 105],
+        'meals': [
+            {
+                'timestamp': '2024-01-11T07:00:00',
+                'name': 'Oatmeal with berries',
+                'type': 'breakfast',
+                'nutrition': {
+                    'calories': 280,
+                    'carbs': 45,
+                    'protein': 8,
+                    'fat': 5
+                }
+            },
+            {
+                'timestamp': '2024-01-11T12:00:00',
+                'name': 'Chicken salad',
+                'type': 'lunch',
+                'nutrition': {
+                    'calories': 420,
+                    'carbs': 20,
+                    'protein': 35,
+                    'fat': 15
+                }
+            },
+            {
+                'timestamp': '2024-01-11T18:00:00',
+                'name': 'Salmon with vegetables',
+                'type': 'dinner',
+                'nutrition': {
+                    'calories': 460,
+                    'carbs': 25,
+                    'protein': 40,
+                    'fat': 20
+                }
+            }
+        ]
+    }
 
 def get_heart_rate_data():
     # Generate sample heart rate data

@@ -89,6 +89,7 @@ def main():
     with col2:
         # Recommendations will go here
         st.subheader("Recommendations")
+        st.write("Personalized health insights will appear here.")
         # Add recommendations component
 
 if __name__ == "__main__":
