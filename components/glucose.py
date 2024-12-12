@@ -8,9 +8,9 @@ def render_glucose_trends(glucose_data):
     # User options for timeframe
     timeframe = st.selectbox("Select Timeframe", options=["Last 7 Days", "Last 30 Days", "All Time"])
     if timeframe == "Last 7 Days":
-        glucose_data = glucose_data.tail(7)
+        glucose_data = glucose_data
     elif timeframe == "Last 30 Days":
-        glucose_data = glucose_data.tail(30)
+        glucose_data = glucose_data
 
     # Calculate rolling averages and variability
     glucose_data['RollingAvg'] = glucose_data['Value'].rolling(window=3).mean()
