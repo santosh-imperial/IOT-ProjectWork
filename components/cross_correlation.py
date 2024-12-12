@@ -8,13 +8,23 @@ from statsmodels.tsa.stattools import ccf
 def render_cross_correlation_insights(glucose_data, sleep_data, heart_rate_data):
     st.subheader("Cross-Correlation Insights")
 
+     # Convert dictionaries to DataFrames
+    glucose_df = pd.DataFrame({
+        'Timestamp': pd.to_datetime(glucose_data['timestamp']),
+        'Glucose': glucose_data['Value']
+    })
+    sleep_df = pd.DataFrame({
+        'Timestamp': pd.to_datetime(sleep_data['timestamp']),
+        'Sleep': sleep_data['duration']
+    })
+    heart_rate_df = pd.DataFrame({
+        'Timestamp': pd.to_datetime(heart_rate_data['timestamp']),
+        'HeartRate': heart_rate_data['value']
+    })
+
     # Merge datasets
-    merged_data = pd.DataFrame({
-        "Timestamp": glucose_data["timestamp"],
-        "Glucose": glucose_data["Value"],
-        "Sleep": sleep_data["duration"],  # Assuming 'duration' is in minutes
-        "HeartRate": heart_rate_data["value"]  # Assuming 'value' is bpm
-    }).dropna()
+    merged_data = pd.merge_asof(glucose_df, sleep_df, on="Timestamp", direction="nearest")
+    merged_data = pd.merge_asof(merged_data, heart_rate_df, on="Timestamp", direction="nearest")
 
     # Correlation Matrix
     st.write("### Correlation Matrix")

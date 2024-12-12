@@ -154,15 +154,17 @@ def get_time_in_range():
     ]
 
 def get_sleep_data():
-        return {
-            "timestamp": [
-                "2024-12-03T22:00:00", "2024-12-03T06:00:00",
-                "2024-12-04T23:00:00", "2024-12-04T07:00:00",
-                "2024-12-05T22:30:00", "2024-12-05T06:30:00"
-            ],
-            "duration": [480, 480, 480],  # Sleep durations in minutes
-            "metrics": {
-                "mean_sleep": 480.00,
-                "std_dev_sleep": 0.00
-            }
+    now = datetime.now()
+    timestamps = [
+        (now - timedelta(days=x)).strftime('%Y-%m-%dT%H:%M:%S') for x in range(7)
+    ]
+    durations = [480, 450, 500, 460, 470, 440, 430]  # Sleep durations in minutes
+
+    return {
+        'timestamp': timestamps,
+        'duration': durations,
+        'metrics': {
+            'mean_sleep': np.mean(durations),
+            'std_dev_sleep': np.std(durations)
         }
+    }
