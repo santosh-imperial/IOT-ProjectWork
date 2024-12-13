@@ -76,7 +76,7 @@ def get_meal_recommendation():
         'meal_type': 'Dinner',
         'main_dish': 'chicken tikka masala',
         'side_dish': 'Naan',
-        'context': 'You have maintained your sugar levels and completed your daily steps. Enjoy this protein-rich meal!',
+        'context': 'Your have maintained your sugar levels and you have got in the required steps for the day. So time to have something fun at the same time ensuring you get your required protein portion for the day. Here are things you should pick up from the store',
         'shopping_list': [
             'Boneless chicken thigh',
             'Tikka masala curry',

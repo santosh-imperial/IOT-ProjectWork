@@ -101,7 +101,8 @@ def main():
     with col2:
         # Recommendations
         st.subheader("Recommendations")
-        st.write("Personalized health insights will appear here.")
+        st.write("Optimal Meal Timing: Consider having dinner before 7 PM to maintain steadier glucose levels and improve sleep quality.")
+        st.write("Sleep Schedule: Your sleep pattern shows improvement. Maintain your current bedtime routine for optimal rest.")
         render_what_if_scenarios()
 
     
